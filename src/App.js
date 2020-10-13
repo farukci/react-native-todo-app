@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import {SafeAreaView, View, Text, StyleSheet, FlatList, Dimensions, TextInput, TouchableOpacity, } from "react-native"
 
-// import Input from "./components/Input";
 import AddTodo from "./components/AddTodo";
 
 const Todo = () => {

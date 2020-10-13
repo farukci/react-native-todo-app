@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions, Button} from "react-native";
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions,} from "react-native";
 
 export default function AddTodo({ submitHandler }) {
     const [text, setText] = useState("");
@@ -7,7 +7,6 @@ export default function AddTodo({ submitHandler }) {
     const changeHandler = (val) => {
         setText(val);
     }
-
 
     return (
         <View style={styles.container}>
@@ -22,9 +21,7 @@ export default function AddTodo({ submitHandler }) {
                     <Text style={styles.buttonText}>Add TODO</Text>
                 </View>
             </TouchableOpacity>
-
         </View>
-
     )
 }
 
@@ -58,5 +55,4 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "center",
     }
-
 })
