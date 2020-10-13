@@ -1,7 +1,7 @@
 import React from "react"
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions} from "react-native"
 
-const Input = () => {
+const Input = ({onPress}) => {
     return (
         <View style={styles.container}>
             <TextInput
@@ -9,7 +9,7 @@ const Input = () => {
                 placeholder="please input"
             />
             
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPress}>
                 <View style={styles.button}>
                     <Text style={styles.buttonText}>Add TODO</Text>
                 </View>
@@ -39,10 +39,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     button: {
-        borderWidth: 1,
         backgroundColor: "#546E7A",
         width: Dimensions.get("window").width / 2,
         alignSelf: "center",
+        padding: 15,
+        borderRadius: 10,
     },
     buttonText: {
         color: "white",
