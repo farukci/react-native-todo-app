@@ -1,21 +1,43 @@
-import React from "react"
-import {SafeAreaView, View, Text, StyleSheet, } from "react-native"
+import React, {useState} from "react"
+import {SafeAreaView, View, Text, StyleSheet, FlatList, Dimensions, TextInput, TouchableOpacity, } from "react-native"
 
-import Input from "./components/Input"
+// import Input from "./components/Input";
+import AddTodo from "./components/AddTodo";
 
 const Todo = () => {
-  const todoList = [];
+  
+  const [todos, setTodos] = useState([
+    {text: "buy coffee ☕", key: "0" },
+    {text: "clean house 🧼", key: "1"},
+    {text: "play guitar 🎸", key: "2"}
+  ])
 
-  function addTodo() {
-    
+  const submitHandler = (text) => {
+    setTodos((prevTodos) => {
+      return [
+        ...prevTodos,
+        {text: text, key: Math.random().toString() * 100}
+      ]; 
+    })
   }
 
 
   return (
-    <SafeAreaView style={{flex:1,}}>
-      <View style={styles.container}>
-        <Input onPress={() => {}}/>
+    <SafeAreaView style={{flex:1, backgroundColor: "#37474F", justifyContent: "space-between"}}>
+      <View>
+        <Text style={styles.header}>TODO</Text>
+        <View>
+          <FlatList
+            data={todos}
+            renderItem={({item}) => (
+            <Text style={styles.todosBar}>{item.text}</Text>
+            )} 
+          />
+        </View>
       </View>
+
+      <AddTodo submitHandler={submitHandler}/>
+
     </SafeAreaView>
   )
 }
@@ -23,9 +45,20 @@ const Todo = () => {
 export default Todo
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: "#37474F",
-    justifyContent: "flex-end"
-  }
+  header: {
+    color: "orange",
+    fontSize: 50,
+    fontWeight: "bold",
+    marginLeft: 10,
+  },
+  todosBar: {
+    marginHorizontal: 10,
+    marginVertical: 5,
+    padding: 10,
+    backgroundColor: "#546E7A",
+    color: "white",
+    borderRadius: 10,
+    fontSize: 20,
+  },
+  
 })
