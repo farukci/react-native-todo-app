@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {SafeAreaView, View, Text, StyleSheet, FlatList, Dimensions, TextInput, TouchableOpacity, } from "react-native"
+import {SafeAreaView, View, Text, StyleSheet, FlatList, ScrollView, Image, TouchableOpacity } from "react-native"
 
 import AddTodo from "./components/AddTodo";
 
@@ -11,32 +11,46 @@ const Todo = () => {
     {text: "play guitar 🎸", key: "2"}
   ])
 
-  const submitHandler = (text) => {
-    setTodos((prevTodos) => {
+  const addNewTodo = (text) => {
+    setTodos((todos) => {
       return [
-        ...prevTodos,
+        ...todos,
         {text: text, key: Math.random().toString() * 100}
       ]; 
     })
   }
 
+  const deleteTodo = (key) => {
+    setTodos((todos) => {
+      return todos.filter(todo => todo.key != key);
+    });
+  }
+
+
 
   return (
-    <SafeAreaView style={{flex:1, backgroundColor: "#37474F", justifyContent: "space-between"}}>
-      <View>
-        <Text style={styles.header}>TODO</Text>
+    <SafeAreaView style={{flex:1, backgroundColor: "#37474F",}}>
+      <ScrollView 
+        contentInsetAdjustmentBehavior="automatic" 
+        style={{flex:1, }}>
         <View>
-          <FlatList
-            data={todos}
-            renderItem={({item}) => (
-            <Text style={styles.todosBar}>{item.text}</Text>
-            )} 
-          />
+          <Text style={styles.header}>TODO</Text>
+          <View>
+            <FlatList
+              data={todos}
+              renderItem={({item}) => (
+              <View style={styles.todosBar}>
+                  <Text style={{color: "white", fontSize: 20,}}>{item.text}</Text>
+                  {/* <TouchableOpacity onPress={(item) => console.log(item.text)}>
+                    <Image style={{width: 20, height: 20}} source={require("./image/dustbin.png")} />
+                  </TouchableOpacity> */}
+              </View>
+              )} 
+            />
+          </View>
         </View>
-      </View>
-
-      <AddTodo submitHandler={submitHandler}/>
-
+      </ScrollView>
+      <AddTodo addNewTodo={addNewTodo}/>
     </SafeAreaView>
   )
 }
@@ -55,9 +69,9 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     padding: 10,
     backgroundColor: "#546E7A",
-    color: "white",
     borderRadius: 10,
     fontSize: 20,
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
-  
 })
