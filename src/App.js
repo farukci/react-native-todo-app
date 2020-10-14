@@ -46,7 +46,11 @@ const Todo = () => {
               <View style={styles.todosBar}>
                   <Text style={{color: "white", fontSize: 20,}}>{item.text}</Text>
                   <TouchableOpacity onPress={() => deleteTodo(item.key)}>
-                    <Image style={{width: 20, height: 20}} source={require("./image/dustbin.png")} />
+                    <Image 
+                      style={{width: 15, height: 15, margin: 5,}} 
+                      source={require("./image/delete-icon.png")}
+                      tintColor="orange"
+                    />
                   </TouchableOpacity>
               </View>
               )} 
