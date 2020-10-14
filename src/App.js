@@ -37,7 +37,7 @@ const Todo = () => {
 
 
   return (
-    <SafeAreaView style={{flex:1, backgroundColor: "#37474F",}}>
+    <SafeAreaView style={{flex:1, backgroundColor: "#311b92",}}>
       <ScrollView 
         contentInsetAdjustmentBehavior="automatic" 
         style={{flex:1, }}>
@@ -59,7 +59,7 @@ const Todo = () => {
                     <Image 
                       style={{width: 15, height: 15, margin: 5,}} 
                       source={require("./image/delete-icon.png")}
-                      tintColor="orange"
+                      tintColor="#ffb300"
                     />
                   </TouchableOpacity>
               </View>
@@ -77,7 +77,7 @@ export default Todo
 
 const styles = StyleSheet.create({
   header: {
-    color: "orange",
+    color: "#ffb300",
     fontSize: 50,
     fontWeight: "bold",
     marginHorizontal: 10,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 5,
     padding: 10,
-    backgroundColor: "#546E7A",
+    backgroundColor: "#5e35b1",
     borderRadius: 10,
     fontSize: 20,
     flexDirection: "row",
