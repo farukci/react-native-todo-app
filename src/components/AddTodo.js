@@ -23,11 +23,12 @@ export default function AddTodo({ addNewTodo }) {
 
 const styles = StyleSheet.create({
     container: {
-        height: Dimensions.get("window").height * 0.20,
+        height: Dimensions.get("window").height / 6,
         justifyContent: "space-around",
         backgroundColor: "#B0BEC5",
         borderRadius: 20,
-        marginHorizontal: 10,
+        // marginHorizontal: 10,
+        margin: 10,
         padding: 5,
     },
     inputText: {
