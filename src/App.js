@@ -6,15 +6,15 @@ import AddTodo from "./components/AddTodo";
 const Todo = () => {
   
   const [todos, setTodos] = useState([
-    {text: "buy coffee ☕", key: "0" },
-    {text: "clean house 🧼", key: "1"},
-    {text: "play guitar 🎸", key: "2"}
+    // {text: "buy coffee ☕", key: "0" },
+    // {text: "clean house 🧼", key: "1"},
+    // {text: "play guitar 🎸", key: "2"}
   ])
 
   const addNewTodo = (text) => {
     setTodos((todos) => {
       return [
-        {text: text, key: (Math.random() * 1000).toString()},
+        {text: text, key: Math.floor(Math.random() * 1000).toString()},
         ...todos,
       ]; 
     })
@@ -25,6 +25,14 @@ const Todo = () => {
       return todos.filter(todo => todo.key != key);
     });
   }
+
+  const doneTodo = (style) => {
+    setTodos((todos) => {
+      return console.log("hello");
+    });
+  }
+
+  
 
 
 
@@ -44,7 +52,9 @@ const Todo = () => {
               data={todos}
               renderItem={({item}) => (
               <View style={styles.todosBar}>
-                  <Text style={{color: "white", fontSize: 20,}}>{item.text}</Text>
+                <TouchableOpacity onPress={() => {}}>
+                  <Text style={styles.todosBarText}>{item.text}</Text>
+                </TouchableOpacity>
                   <TouchableOpacity onPress={() => deleteTodo(item.key)}>
                     <Image 
                       style={{width: 15, height: 15, margin: 5,}} 
@@ -81,5 +91,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+  todosBarText: {
+    color: "white", 
+    fontSize: 20,
+    // textDecorationLine: "line-through",
   },
 })

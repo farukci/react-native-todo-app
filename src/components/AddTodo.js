@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "white",
         fontWeight: "bold",
-        textTransform: "capitalize",
+        // textTransform: "capitalize",
         fontSize: 16,
         textAlign: "center",
         textTransform: "uppercase",
