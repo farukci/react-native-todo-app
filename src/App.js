@@ -14,8 +14,8 @@ const Todo = () => {
   const addNewTodo = (text) => {
     setTodos((todos) => {
       return [
+        {text: text, key: (Math.random() * 1000).toString()},
         ...todos,
-        {text: text, key: Math.random().toString() * 100}
       ]; 
     })
   }
@@ -34,16 +34,20 @@ const Todo = () => {
         contentInsetAdjustmentBehavior="automatic" 
         style={{flex:1, }}>
         <View>
-          <Text style={styles.header}>TODO</Text>
+          <View style={{flexDirection: "row", justifyContent: "space-between"}}>
+            <Text style={styles.header}>TODO</Text>
+            <Text style={styles.header}>{todos.length}</Text>
+          </View>
+
           <View>
             <FlatList
               data={todos}
               renderItem={({item}) => (
               <View style={styles.todosBar}>
                   <Text style={{color: "white", fontSize: 20,}}>{item.text}</Text>
-                  {/* <TouchableOpacity onPress={(item) => console.log(item.text)}>
+                  <TouchableOpacity onPress={() => deleteTodo(item.key)}>
                     <Image style={{width: 20, height: 20}} source={require("./image/dustbin.png")} />
-                  </TouchableOpacity> */}
+                  </TouchableOpacity>
               </View>
               )} 
             />
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
     color: "orange",
     fontSize: 50,
     fontWeight: "bold",
-    marginLeft: 10,
+    marginHorizontal: 10,
   },
   todosBar: {
     marginHorizontal: 10,
